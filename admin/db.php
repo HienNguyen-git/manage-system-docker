@@ -1,7 +1,7 @@
 <?php
-    define('HOST', '127.0.0.1');
+    define('HOST', 'mysql-server');
     define('USER', 'root');
-    define('PASS', '');
+    define('PASS', 'root');
     define('DB', 'company');
 
     function open_database(){
@@ -791,5 +791,14 @@
         }
     }
 
-    
+    function delete_absence_info($username){
+        $sql = 'delete from absence_info where username = ?';
+        $conn = open_database();
+
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('s',$username);
+        if(!$stm->execute()){
+            return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
+        }
+    }
 ?> 

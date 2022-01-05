@@ -24,6 +24,7 @@
     }
 
     $id = $input->id;
+    $currentName = $input->currentName;
     $sql = 'delete from employee where id=?';
     $conn = open_database();
     
@@ -34,5 +35,6 @@
         http_response_code(400);
         die(json_encode(array('code'=>5,'message'=>'Khong the thuc hien lenh')));
     }
+    delete_absence_info($currentName);
     die(json_encode(array('code'=>0,'message'=>'Da xoa thanh cong')));
 ?>

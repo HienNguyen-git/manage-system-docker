@@ -711,21 +711,26 @@ else if(pageValue === 'detailEmployeephp'){
 else if(pageValue === 'indexphp'){
     //xóa
     let currentID;
+    let currentName;
     const employeeDeleteName = document.querySelector('.employee-delete-name');
     function handleTransferToDelete(name, id){
         employeeDeleteName.innerHTML = name;
         currentID = id;
+        currentName = name;
     }
+    // console.log(currentID);
+    // console.log(currentName);
     document.getElementById('btn-del').addEventListener('click',async () =>{
         const request = await fetch('delete_employee.php',{
             method: 'delete',
-            body: JSON.stringify({id:currentID}),
+            body: JSON.stringify({id:currentID,currentName}),
             headers: {
                 "Content-Type": "application/json"
             },
         })
         
         const res = await request.json();
+        console.log(res);
         reloadPage(res);
     })
 }

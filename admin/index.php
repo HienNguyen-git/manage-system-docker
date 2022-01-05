@@ -1,6 +1,6 @@
 <?php
-	require_once('db.php');
     session_start();
+	require_once('db.php');
 	$user = get_info_employee_byuser($_SESSION['user']);
     if (!isset($_SESSION['user'])) {
         header('Location: ../login.php');
