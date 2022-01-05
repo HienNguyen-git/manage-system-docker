@@ -1,6 +1,6 @@
 <?php 
+    ob_start();
     require_once('db.php');
-
     if(isset($_GET['username']) && isset($_GET['id'])){
         $user = $_GET['username'];
         $id = $_GET['id'];
@@ -16,8 +16,6 @@
             return array('code' => 2, 'error' => 'Cant execute command');
         }
         header("Location: detailEmployee.php?id=$id");
-        // return array('code' => 0, 'success' => 'Password reset');
     }
-
-
+    ob_end_flush(); 
 ?>
