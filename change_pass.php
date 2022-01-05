@@ -1,4 +1,5 @@
-<?php
+<?php   
+    ob_start();
     session_start();
     require_once('db.php');
     $user = $_SESSION['user'];
@@ -135,3 +136,7 @@
 
 </body>
 </html>
+<?php 
+
+    ob_end_flush();
+?>
