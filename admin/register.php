@@ -120,7 +120,6 @@
                             }
                         ?>
                         <button  type="submit" class="btn btn-success px-5 mt-3 mr-2" style="width: 100%;">Register</button>
-                        <button id="btnReset" type="reset" class="btn btn-success px-5 mt-3" style="width: 100%;">Reset</button>
                     </div>
                     <div class="form-group">
                         <a href="../login.php" class="btn btn-secondary" >Back</a>

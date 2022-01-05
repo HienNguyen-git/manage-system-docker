@@ -1,7 +1,7 @@
 <?php
+    session_start();
     require_once('db.php');
     
-    session_start();
     // print_r(get_info_employees()['role']) ;
     if (isset($_SESSION['user'])) {
         $role = get_info_employee_byuser($_SESSION['user'])['role'];
