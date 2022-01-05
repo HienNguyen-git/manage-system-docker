@@ -116,24 +116,32 @@
                                                 <td>Department</td>
                                                 <td><?= $row['department']?></td>
                                             </tr>
+                                            <tr>
+                                                <td>
+
+                                                    <a id="btnReset" 
+                                                        class="btn btn-info bg-info"
+                                                        data-toggle="modal" 
+                                                        data-target="#reset-modal"
+                                                        onclick="handleTransferToReset('<?= $username ?>')" 
+                                                    >
+                                                        Reset Password      
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a 
+                                                        style="min-width: 145px;"
+                                                        class="btn btn-primary bg-primary"
+                                                        data-toggle="modal" 
+                                                        data-target="#edit-employee-detail"
+                                                        onclick="handleTransferToUpdate('<?= $id ?>','<?= $firstname ?>','<?= $lastname ?>')" 
+                                                    >
+                                                        Edit     
+                                                    </a>
+
+                                                </td>
+                                            </tr>
                                         </table>
-                                        <a id="btnReset" 
-                                            class="btn btn-info bg-info"
-                                            data-toggle="modal" 
-                                            data-target="#reset-modal"
-                                            onclick="handleTransferToReset('<?= $username ?>')" 
-                                        >
-                                            Reset Password      
-                                        </a>
-                                        <a 
-                                            style="min-width: 145px;"
-                                            class="btn btn-primary bg-primary"
-                                            data-toggle="modal" 
-                                            data-target="#edit-employee-detail"
-                                            onclick="handleTransferToUpdate('<?= $id ?>','<?= $firstname ?>','<?= $lastname ?>')" 
-                                        >
-                                            Edit     
-                                        </a>
                                         
                                     <?php
                                 }
