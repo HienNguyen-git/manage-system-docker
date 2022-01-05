@@ -205,6 +205,21 @@
         }
         return array('code'=>0,'data'=>$data);
     }
+    function get_department_by_id($id){
+        $sql = "select * from department where id = ?";
+        $conn = open_database();
+
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('i',$id);
+
+        if(!$stm->execute()){
+            return array('code'=>1,'error'=>'Command not execute');
+        }
+
+        $result = $stm->get_result();
+        $data = $result->fetch_assoc();
+        return array('code'=>0,'data'=>$data);
+    }
     function get_absence_by_role($role,$department){
         $sql = "SELECT absence_form.id, employee.username, role, create_date, number_dayoff,reason,file,status FROM employee RIGHT JOIN absence_form ON employee.username = absence_form.username where role = ? and department = ? order by create_date desc";
         $conn = open_database();

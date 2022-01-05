@@ -191,6 +191,7 @@
 													data-toggle="modal" 
 													data-target="#delete-department" 
 												>Delete</a>
+												<a href="departmentDetail.php?id=<?= $row['id']?>" class="btn btn-success">View detail</a>  
 										</td>
 									</tr>
 									<?php 
