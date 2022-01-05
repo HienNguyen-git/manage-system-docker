@@ -59,7 +59,7 @@
 		<h1 class="mt-3 text-secondary">ACCOUNT INFORMATION</h1>
         <h3 class="mt-1 mb-3 pb-3 border-bottom border-info text-light"><?=$user?></h3>
         <a class="btn btn-primary col-12 col-sm-4" href="change_pass.php">Change password</a>
-        <div class="ml-auto mr-auto account-container">
+        <div class="ml-auto mr-auto account-container" style="height: 50vh;">
             <?php
                 $data = get_user_info($user);
                 if(!$data['code']){

@@ -298,14 +298,10 @@ td{
     justify-content: flex-end;
 }
 
-/* .image-box img{
+.image-box img{
     max-width: 70%;
 
-} */
+}
 .btn{
     margin-right: 8px !important;
 }
-
-/* .bg-light{
-    height: 100vh;
-} */
