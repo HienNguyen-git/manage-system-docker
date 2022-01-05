@@ -65,9 +65,9 @@
                 if(!$data['code']){
                     $row = $data['data'];
                     ?>
-                    <div class="image-box-em">
+                    <div class="image-box">
                         <img src="<?=$row['avatar']?>" alt="Avatar">
-                        <div class="image-action-em">
+                        <div class="image-action">
                         <!-- '.$row['movieID'].' -->
                             <button style="display: block; background-color:transparent; border: 0; color: #fff" data-toggle="modal" data-target="#edit-avatar"><i class="fas fa-images"></i> Change image</button>
                         </div>

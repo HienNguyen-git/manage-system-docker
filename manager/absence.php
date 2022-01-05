@@ -74,7 +74,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<link rel="stylesheet" href="../style.css"> <!-- Change -->
+	<link rel="stylesheet" href="/style.css"> <!-- Change -->
 	<title>Home Page</title>
 	
 </head>
@@ -230,7 +230,7 @@
 	<?php
 		if(!$status||!$is_lock || !$dayoff_left){
 			?>
-				<script src="../main.js"></script>
+				<script src="/main.js"></script>
 
 				<!-- <script>
 					$(".custom-file-input").on("change", function () {

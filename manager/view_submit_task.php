@@ -1,6 +1,6 @@
 <?php
-    require_once('../admin/db.php');
     session_start();
+    require_once('../admin/db.php');
     if (!isset($_SESSION['user'])) {
         header('Location: login.php');
         exit();
