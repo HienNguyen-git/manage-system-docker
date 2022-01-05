@@ -108,7 +108,7 @@
 			$absenceHistory = get_absence_history($user);
 			if($absenceHistory['code']==2){
 				?>
-					<button class="btn btn-success submit-btn-absence col-sm-12 col-md-6 mb-3">Create request absence form</button>
+					<button class="btn btn-success submit-btn-absence col-sm-12 col-md-5 mb-3">Create request absence form</button>
 				<?php
 			}
 			if(!$absenceHistory['code']){
@@ -120,7 +120,7 @@
 					$is_lock = true;
 				}else{
 					?>
-						<button class="btn btn-success submit-btn-absence col-sm-12 col-md-6 mb-3">Create request absence form</button>
+						<button class="btn btn-success submit-btn-absence col-sm-12 col-md-5 mb-3">Create request absence form</button>
 					<?php
 				}
 				?>

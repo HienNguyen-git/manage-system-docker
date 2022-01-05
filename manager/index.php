@@ -1,12 +1,12 @@
 <?php
-	require_once('../admin/db.php');
     session_start();
+	require_once('../admin/db.php');
 	//is_login
-	$user =get_info_employee_byuser($_SESSION['user']);
     if (!isset($_SESSION['user'])) {
-        header('Location: ../login.php');
+		header('Location: ../login.php');
         exit();
     }
+	$user =get_info_employee_byuser($_SESSION['user']);
 	
 	//is_change_pass and check role
 	if( !is_password_changed($_SESSION['user']) ){
@@ -92,7 +92,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="/style.css">
 	<title>Home Page</title>
 </head>
 
@@ -250,7 +250,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<script src="../main.js"></script>
+	<script src="/main.js"></script>
 	<!-- <script>
 		$(".custom-file-input").on("change", function () {
 			var fileName = $(this).val().split("\\").pop();

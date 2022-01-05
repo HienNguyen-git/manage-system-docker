@@ -59,15 +59,15 @@
 		<h1 class="mt-3 text-secondary">ACCOUNT INFORMATION</h1>
         <h3 class="mt-1 mb-3 pb-3 border-bottom border-info text-light"><?=$user?></h3>
         <a class="btn btn-primary col-12 col-sm-4" href="change_pass.php">Change password</a>
-        <div class="ml-auto mr-auto account-container">
+        <div class="ml-auto mr-auto account-container" style="height: 50vh;">
             <?php
                 $data = get_user_info($user);
                 if(!$data['code']){
                     $row = $data['data'];
                     ?>
-                    <div class="image-box-em">
+                    <div class="image-box">
                         <img src="<?=$row['avatar']?>" alt="Avatar">
-                        <div class="image-action-em">
+                        <div class="image-action">
                         <!-- '.$row['movieID'].' -->
                             <button style="display: block; background-color:transparent; border: 0; color: #fff" data-toggle="modal" data-target="#edit-avatar"><i class="fas fa-images"></i> Change image</button>
                         </div>
