@@ -1,5 +1,15 @@
 <?php
+    session_start();
     ob_start();
+    
+    if (!isset($_SESSION['user'])) {
+        header('Location: /login.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
+    }
+
     define('HOST', 'mysql-server');
     define('USER', 'root');
     define('PASS', 'root');

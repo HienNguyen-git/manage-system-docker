@@ -1,7 +1,14 @@
 <?php
+    session_start();
     ob_start();
     require_once('db.php');
-
+    if (!isset($_SESSION['user'])) {
+        header('Location: /login.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
+    }
     if($_SERVER['REQUEST_METHOD']!='POST'){
         http_response_code(405);
         die(json_encode(array('code'=>1,'message'=>'API nay chi ho tro POST')));

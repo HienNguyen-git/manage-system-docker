@@ -3,7 +3,10 @@
     ob_start();
     require_once('db.php');
     if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
+        header('Location: /login.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
         exit();
     }
 ?>

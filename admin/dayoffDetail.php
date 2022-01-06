@@ -3,7 +3,10 @@
     ob_start();
     require_once('db.php');
     if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
+        header('Location: /login.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
         exit();
     }
 ?>
@@ -25,18 +28,6 @@
 
 <body>
     <?php
-    /*
-    $link = mysqli_connect("localhost", "root", "", "");
-    $sql = "SELECT * FROM account where username='$user'";
-    $result = mysqli_fetch_assoc(mysqli_query($link, $sql));
-    // print_r($result);
-
-    $username = $result['username'];
-    $firstname = $result['firstname'];
-    $lastname = $result['lastname'];
-    $email = $result['email'];
-    $sdt = $result['sdt'];
-    */
     ?>
     <div class="container-fluid admin-section-header">	
         <div class="row">

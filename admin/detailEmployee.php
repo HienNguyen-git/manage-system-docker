@@ -3,7 +3,10 @@
     ob_start();
     require_once('db.php');
     if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
+        header('Location: /login.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
         exit();
     }
 ?>
@@ -220,83 +223,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<script src="/main.js"></script> 
-
-    <!-- <script>
-        const nameResetpass = document.querySelector('.name-resetpass');
-        let currentUsernme;
-        function handleTransferToReset(name){
-            nameResetpass.innerHTML = name;
-            currentUsernme = name;
-        }
-        
-        let currentID
-        //update
-        function handleTransferToUpdate(id,firstname,lastname){
-            // console.log(id,firstname,lastname,role);
-            currentID = id;
-            document.querySelector('#firstNameUpdate').value = firstname;
-            document.querySelector('#lastNameUpdate').value = lastname
-            // document.querySelector('#roleUpdate').value = role
-        }
-
-        document.querySelector('#update-form').addEventListener('submit',async (e)=>{
-            e.preventDefault();
-            const firstname = document.querySelector('#firstNameUpdate').value
-            const lastname = document.querySelector('#lastNameUpdate').value
-            // const role = document.querySelector('#roleUpdate').value
-            const errorMessage = document.getElementById('error-message');
-            const successMessage = document.getElementById('success-message');
-
-            if(firstname === ''){
-                errorMessage.style.display = "block";
-                successMessage.style.display = "none !important";
-                errorMessage.innerHTML = 'Please enter firstname of this person';
-            }else if(lastname === ''){
-                errorMessage.style.display = "block";
-                successMessage.style.display = "none !important";
-                errorMessage.innerHTML = 'Please enter lastname of this person';
-            }else{
-                errorMessage.style.display = "none";
-                successMessage.style.display = "block";
-                successMessage.innerHTML = 'Update success';
-            }
-
-            const sendRequest = await fetch('update_employee.php',{
-                method: 'POST',
-                body: JSON.stringify({id:currentID,firstname,lastname})
-            })
-
-            const res = await sendRequest.json();
-            
-            
-            $('#success-message').addClass("d-block");
-			setTimeout(function() {
-                if(res.code===0){
-                    location.reload();
-                }
-			}, 500);
-
-            // if(res['code']){ //code khác 0 là lỗi
-            //     // errorMessage.style.display = "block";
-            //     // errorMessage.innerHTML = res['message'];
-            // }
-            // reloadPage(res)
-        })
-
-        //reset pass
-        document.getElementById('reset-btn').addEventListener('click', () => {
-            const successMessage = document.getElementById('succmessage');
-            successMessage.style.display = "block";
-                successMessage.innerHTML = 'Reset password success';
-        })
-    </script>
-    <script>
-        function reloadPage(res){
-            if(res.code===0){
-                location.reload();
-            }
-        }
-    </script> -->
 </body>
 
 </html>

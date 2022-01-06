@@ -2,14 +2,19 @@
     session_start();
     ob_start();
     require_once('../db.php');
-   if(!isset($_SESSION['user'])){
-       header('Location: login.php');
-   }
+    if(!isset($_SESSION['user'])){
+        header('Location: /login.php');
+    }
    $user = $_SESSION['user'];
    if( !is_password_changed($user) ){
        header('Location: change_password.php');
        exit();
    }
+    $me = get_info_employee_byuser($_SESSION['user']);
+	if($me['role'] != 'admin' ){
+        move_page($me['role']);
+        exit();
+    }
 
    $error = '';
    $message = "";

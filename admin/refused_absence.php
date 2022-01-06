@@ -1,7 +1,14 @@
 <?php 
+    session_start();
     ob_start();
     require_once('../admin/db.php');
-
+    if (!isset($_SESSION['user'])) {
+        header('Location: /login.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
+    }
     if(isset($_GET['id'])&&isset($_GET['username'])){
         $id = $_GET['id'];
         $user = $_GET['username'];
