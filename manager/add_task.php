@@ -124,11 +124,9 @@
                             <option value="<?= $row['username'] ?>" disabled selected>Employee Name</option>
                             <?php 
                                 $result = get_employee_bydepartment($department);
-                                print_r($result);
                                 if($result['code'] == 0){
                                     $data = $result['data'];
                                     foreach($data as $row){
-                                        // print_r($row['username']);
                                         ?>
                                             <option value="<?= $row['username'] ?>" ><?= $row['username'] ?></option>
                                         <?php

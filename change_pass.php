@@ -34,11 +34,9 @@
 
         $oldpass = $_POST['oldpass'];
         $pass_md5 = md5($oldpass);
-        // echo $pass_md5 . '</br>';
         $pass = $_POST['pass'];
         $pass_confirm = $_POST['pass-confirm'];
         $pass_md5old = select_passmd5($user);
-        // echo $pass_md5old;
 
         if (empty($oldpass)) {
             $post_error = 'Please enter your old password';
@@ -58,7 +56,6 @@
         else {
             $result = change_password($pass,$user);
             $res = employee($user);
-            // active_token($_SESSION['user']);
             if($result['code'] == 0){
                 
                 $success = $result['success'];
@@ -79,13 +76,7 @@
             }
         }
     }
-    else {
-        // print_r($_POST);
-        // $error = 'Something went wrong';
-    }
         
-
-    
 ?>
 <div class="container">
     <div class="row justify-content-center">

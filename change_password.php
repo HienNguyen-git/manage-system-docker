@@ -9,9 +9,7 @@
         exit();
     }
 	$user = $_SESSION['user'];
-	// echo is_password_changed($user);
 	if( is_password_changed($user) ){
-		// echo "pass changed";
 		header('Location: login.php');
 		exit();
 	}
@@ -58,7 +56,6 @@
                     $post_error = 'Password does not match';
                 }
                 else {
-                    // echo 'Good';
                     $result = change_password($pass,$user);
                     $res = employee($user);
                     active_token($_SESSION['user']);
@@ -82,16 +79,6 @@
                     }
                 }
             }
-            else {
-                // print_r($_POST);
-                // $error = 'Something went wrong';
-            }
-        // }
-    // }else{
-    //     $error = 'Invalid email or token';
-    // }
-
-    
 ?>
 <div class="container">
     <div class="row justify-content-center">

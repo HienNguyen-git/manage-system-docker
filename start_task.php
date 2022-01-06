@@ -14,6 +14,7 @@
         if(!$stm->execute()){
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }
+        update_modified_time($id);
         header("Location: task_detail.php?id=$id");
     }else{
         return json_encode(array('code'=> 1,'success' => 'Only can use GET method'));

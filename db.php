@@ -428,6 +428,7 @@
     }
 
     function is_absence_form_unlock($username){
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
         $date = unlock_absence_form_date($username);
         $today = date("Y-m-d H:i:s");
 
@@ -447,5 +448,18 @@
         }
     }
 
+    function update_modified_time($id){
+        $sql = "update task set modified_time = ? where id = ?";
+        $conn = open_database();
+
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $new = date("Y-m-d H:i:s");
+
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('si',$new,$id);
+        if(!$stm->execute()){
+            return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
+        }
+    }
     
 ?>

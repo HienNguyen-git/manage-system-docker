@@ -29,8 +29,8 @@
         if($_POST['is_task_cancel'] == 1)
         {
             $id = $_POST['cancel_id_task'];
-            
             update_task_status($id,'Canceled');
+            update_modified_time($id);
         }
     }
     if(isset($_POST['complete-submit'])){
@@ -52,6 +52,7 @@
                 $message = "This task is done !!!";
                 submit_complete_feedback($id,$rating,$submit_time_status);
                 update_task_status($id,'Completed');
+                update_modified_time($id);
             }
         }
     }
@@ -86,6 +87,7 @@
                         submit_reject_feedback($id,$description,'',$is_extend);
                         update_deadline($id,$deadlineAdd);
                         update_task_status($id,'Rejected');
+                        update_modified_time($id);
                     }else if(!in_array($file_ext,$extensions)){ // Check file type is allow or not
                         $error = "This type of file is not allowed";
                     }else if($file_size>104857600){ // Check file size is less than 100M
@@ -98,6 +100,7 @@
                         submit_reject_feedback($id,$description,$file_path_name,$is_extend);
                         update_deadline($id,$deadlineAdd);
                         update_task_status($id,'Rejected');
+                        update_modified_time($id);
                     }
                 }else{
                     $error = "Please choose extend deadline date";
@@ -107,6 +110,7 @@
                     $message = "Send reject feedback";
                     submit_reject_feedback($id,$description,'',$is_extend);
                     update_task_status($id,'Rejected');
+                    update_modified_time($id);
                 }else if(!in_array($file_ext,$extensions)){ // Check file type is allow or not
                     $error = "This type of file is not allowed";
                 }else if($file_size>104857600){ // Check file size is less than 100M
@@ -118,6 +122,7 @@
                     $message = "Send reject feedback successful";
                     submit_reject_feedback($id,$description,$file_path_name,$is_extend);
                     update_task_status($id,'Rejected');
+                    update_modified_time($id);
                 }
             }
         }

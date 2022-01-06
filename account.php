@@ -23,7 +23,7 @@
         // $file_ext=strtolower(end(explode('.',$file['name'])));
         
         if(empty($errors)){
-            $file_path = "upload/".$file_name;
+            $file_path = "images/".$file_name;
             move_uploaded_file($file_tmp, $file_path);
             $message = "Submit successful";
             update_avatar($user,$file_path);
@@ -44,8 +44,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<link rel="stylesheet" href="style.css"> <!-- Change -->
+	<link rel="stylesheet" href="/style.css"> <!-- Change -->
 	<title>Account Page</title>
 </head>
 
@@ -127,44 +126,6 @@
             </div>  
         </div>
     </div>
-<script src="main.js"></script> 
-<!-- <script>
-    $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-</script>
-
-<script>
-    const messageBox = document.querySelector('#error-message')
-    const uploadBtn = document.querySelector('#upload-btn')
-    uploadBtn.disabled = true
-
-    document.querySelector('#file').addEventListener('change', e=>{
-        const file = e.target.files[0]
-        console.log(file)
-        const type = file['name'].split('.')[1].toLowerCase();
-        const size = file['size']
-        const type_list = ["jpg","png","jpeg","gif"]
-        console.log(type, size, type_list)
-
-        if(size===0){
-            handleMessage('Please upload your submit image')
-        }else if(!type_list.includes(type)){
-            handleMessage('Please upload image file type (ex: jpg,png,....)')
-        }else if(size>Math.pow(1024,2)){
-            handleMessage('This image is larger than 1M')
-        }else{
-            handleMessage('Your image is ready! Upload now', "success")
-            uploadBtn.disabled = false;
-        }
-    })
-
-    function handleMessage(message, type='danger'){
-        messageBox.innerHTML = ''
-        messageBox.insertAdjacentHTML('afterbegin',`<div class="alert alert-${type}">${message}</div>`)
-        uploadBtn.disabled = true
-    }
-</script> -->
+<script src="/main.js"></script> 
 </body>
 </html>

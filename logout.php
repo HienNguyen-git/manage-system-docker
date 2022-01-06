@@ -35,22 +35,6 @@
         </div>
       </div>
     </div>
-  <script src="main.js"></script>
-  <!-- <script>
-      let duration = 5;
-      let countDown = 5;
-      let id = setInterval(() => {
-
-          countDown --;
-          if (countDown >= 0) {
-              $('#counter').html(countDown);
-          }
-          if (countDown == -1) {
-              clearInterval(id);
-              window.location.href = 'login.php';
-          }
-
-      }, 1000);
-  </script> -->
+  <script src="/main.js"></script>
   </body>
 </html>

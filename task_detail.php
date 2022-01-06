@@ -27,23 +27,19 @@
         $extensions= array("txt","doc","docx","xls","xlsx","jpg","png","mp3","mp4","pdf","rar","zip","pptx","html","sql","ppt","jpeg");
         if(empty($description)){ // Check description is empty or not
             $error = "Please enter your description";
-            // echo "1";
         }else if(!$file_name){
             $error = "Please upload your file";
-            // echo "2";
         }else if(!in_array($file_ext,$extensions)){ // Check file type is allow or not
             $error = "This type of file is not allowed";
-            // echo "3";
         }else if($file_size>104857600){ // Check file size is less than 100M
             $error = "This file is larger than 100M";
-            // echo "4";
         }else{ // Upload task
             $file_path = "upload/".$file_name;
             $date = date("Y-m-d");
             move_uploaded_file($file_tmp, $file_path);
-            // $file_path_name = $file_name;
             $message = "Submit successful";
             submit_task($id,$description,$file_path);
+            update_modified_time($id);
         }
     }
 ?>
@@ -61,8 +57,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<link rel="stylesheet" href="style.css"> <!-- Change -->
+	<link rel="stylesheet" href="/style.css"> <!-- Change -->
 	<title>Home Page</title>
 	
 </head>
@@ -233,11 +228,10 @@
             ?>
 		</div>
 </div>
-	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<?php
     if($data['status']=="In progress" || $data['status']=='Rejected'){
         ?>
-        <script src="main.js"></script> <!-- Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
+        <script src="/main.js"></script> <!-- Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
         <?php
     }
     ?>	
