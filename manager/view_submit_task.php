@@ -17,26 +17,11 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	
-    <!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="/style.css">
 	<title>Home Page</title>
 </head>
 
 <body>
-    <?php
-    /*
-    $link = mysqli_connect("localhost", "root", "", "");
-    $sql = "SELECT * FROM account where username='$user'";
-    $result = mysqli_fetch_assoc(mysqli_query($link, $sql));
-    // print_r($result);
-
-    $username = $result['username'];
-    $firstname = $result['firstname'];
-    $lastname = $result['lastname'];
-    $email = $result['email'];
-    $sdt = $result['sdt'];
-    */
-    ?>
     <div class="container-fluid admin-section-header">	
         <div class="row">
 			<div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 admin-logo">
@@ -78,7 +63,6 @@
 				<div class="bg-light mt-4 text-dark p-2">
                     <div class="admin-panel-section-header ">
                         <h2>Submit detail </h2>
-                        <!-- <a class="addbtn"  data-toggle="modal" data-target="#add-movie">Add Accout</a> -->
                     </div>
                     <div class="account-container">
                         <table class="table-hover">
@@ -162,14 +146,9 @@
 			</div>		
 		</div>
 	</div>
-
-	
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<!-- <script src="main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 </body>
 
 </html>

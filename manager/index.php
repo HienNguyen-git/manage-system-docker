@@ -47,12 +47,10 @@
 		
 		$file = $_FILES['file'];
 		$file_name = $file['name'];
-		echo $file_name;
 		$file_size = $file['size'];
 		$file_tmp = $file['tmp_name'];
 		$tmp = explode('.', $file_name);
 		$file_ext = end($tmp);
-		// $file_ext = strtolower(end(explode('.',$file_name)));
         
 		$extensions= array("txt","doc","docx","xls","xlsx","jpg","png","mp3","mp4","pdf","rar","zip","pptx","html","sql","ppt","jpeg");
 		if(empty($title)){
@@ -91,7 +89,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<link rel="stylesheet" href="/style.css">
 	<title>Home Page</title>
 </head>
@@ -138,7 +135,6 @@
 				<div class="bg-light mt-4 text-dark p-2">
 					<div class="admin-panel-section-header">
 						<h2>List Tasks</h2>
-						<!-- <a class="addbtn"  data-toggle="modal" data-target="#add-task">Add Task</a> -->
 						<a class="addbtn"  href="add_task.php">Add Task</a>
 					</div>
 					<table class="table-hover" cellpadding="10" cellspacing="10" border="1" style="width: 100%; margin-top:20px">
@@ -214,11 +210,9 @@
 								<option value="" disabled selected>Employee Name</option>
 								<?php 
 									$result = get_employee_bydepartment($department);
-									// print_r($result);
 									if($result['code'] == 0){
 										$data = $result['data'];
 										foreach($data as $row){
-											// print_r($row['username']);
 											?>
 												<option value="<?= $row['username'] ?>" ><?= $row['username'] ?></option>
 											<?php
@@ -249,78 +243,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<script src="/main.js"></script>
-	<!-- <script>
-		$(".custom-file-input").on("change", function () {
-			var fileName = $(this).val().split("\\").pop();
-			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-		});
-	</script>
-	<script>
-		//btn upload
-		const addBtn = document.getElementById('add-btn');
-		addBtn.disabled = true;
-		const taskTitleAdd = document.getElementById('taskTitleAdd');
-		console.log(taskTitleAdd.value);
-		// if()
-		//file
-		const uploadFile = document.querySelector('#file')
-		uploadFile.addEventListener('change', e=>{      
-			const file = e.target.files[0];
-			const fileSize = file.size;
-			const fileName = file.name;
-			const fileExt = fileName.split('.').pop().toLowerCase();
-			const type_list = ["txt","doc","docx","xls","xlsx","jpg","png","mp3","mp4","pdf","rar","zip","pptx","sql","ppt","jpeg"];
-			if(fileSize === 0){
-				handleErrorMessage('Please upload file');
-			}else if(!type_list.includes(fileExt)){
-				handleErrorMessage('This type of file is not allowed');
-			}else if(fileSize > 100*Math.pow(1024,2)){
-				handleErrorMessage('This file is larger than 100M');
-			}else{
-				handleSuccessMessage('This file is ok')
-			}
-		});
-		const messageBox = document.querySelector('#error-message')
-		//thành công
-		function handleSuccessMessage(message){
-			messageBox.innerHTML = '';
-			messageBox.insertAdjacentHTML('beforeend',`<div class='alert alert-success'>${message}</div>`)
-		}
-		//lỗi
-		function handleErrorMessage(message){
-			messageBox.innerHTML = '';
-			messageBox.insertAdjacentHTML('beforeend',`<div class='alert alert-danger'>${message}</div>`)
-			uploadBtn.disabled = true;
-		}
-
-		//thêm
-		// const addForm = document.querySelector('#add-form');
-        // addForm.addEventListener('submit', async (e)=>{
-        //     e.preventDefault();
-        //     const taskTitleAdd = document.querySelector('#taskTitleAdd').value;
-        //     const taskDetailAdd = document.querySelector('#taskDetailAdd').value;
-		// 	const deadlineAdd = document.querySelector('#deadlineAdd').value;
-		// 	const uploadFile = document.querySelector('#file');
-		// 	const taskEmployeeAdd = document.querySelector('#taskEmployeeAdd').value;
-            
-		// 	console.log(taskTitleAdd,taskDetailAdd,deadlineAdd,fileAdd,taskEmployeeAdd);
-		// 	const sendRequest = await fetch('add_department.php',{
-        //         method: 'POST',
-        //         body: JSON.stringify({taskTitleAdd,taskDetailAdd,deadlineAdd})
-        //     })
-        //     const res = await sendRequest.json();
-        //     reloadPage(res)
-        // })
-	</script>
-	<script>
-		function reloadPage(res){
-            if(res.code===0){
-                location.reload();
-            }
-        }
-	</script> -->
 </body>
 
 </html>

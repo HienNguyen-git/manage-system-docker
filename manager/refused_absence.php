@@ -1,8 +1,6 @@
 <?php 
     ob_start();
     require_once('../admin/db.php');
-   
-    
 
     if(isset($_GET['id'])&&isset($_GET['username'])){
         $id = $_GET['id'];
@@ -19,7 +17,6 @@
         }
         update_approval_date($user);
         header("Location: dayoffDetail.php?id=$id");
-        // return array('code' => 0, 'success' => 'Password reset');
     }
     ob_end_flush();
 

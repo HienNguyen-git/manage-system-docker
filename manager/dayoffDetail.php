@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	
-    <!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<link rel="stylesheet" href="/style.css">
 	<title>Home Page</title>
 </head>
@@ -72,17 +70,13 @@
                             <?php 
                                 $id = $_GET['id'];
                                 $result = get_absence_byid($id); 
-                                // print_r($result) ;
                                 if($result['code'] == 0){
                                     $data = $result['data'];
                                     foreach($data as $row){
                                         $username = $row['username'];
-                                        // print_r($row) ;
                                         $infoAbsence = get_absence_info_by_username($username);
-                                        // print_r($infoAbsence) ;
                                         $infoAbsenceData = $infoAbsence['data'];
                                         foreach($infoAbsenceData as $infoRow){
-                                            // print_r($infoRow['total_dayoff']);
                                             ?>    
                                                 <tr>
                                                     <td>ID</td>
@@ -171,8 +165,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
-	<!-- <script src="main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 </body>
 
 </html>

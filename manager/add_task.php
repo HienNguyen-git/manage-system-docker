@@ -6,7 +6,6 @@
         header('Location: ../login.php');
         exit();
     }
-    //save department
 	$department = get_department_byuser($_SESSION['user'])['department'];
 ?>
 <!DOCTYPE html>
@@ -25,7 +24,6 @@
 
 <input type="hidden" name="page" id="page" value="manager-addtask">
 <?php
-    // echo "helel";
     $error = '';
     $success = '';
 
@@ -152,31 +150,7 @@
         </div>
 
     </div>
-    <script src="../main.js"></script>
-<!-- <script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-</script>
-<script>
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if (dd < 10) {
-    dd = '0' + dd;
-    }
-
-    if (mm < 10) {
-    mm = '0' + mm;
-    } 
-        
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("deadlineAdd").setAttribute("min", today);
-</script> -->
+    <script src="/main.js"></script>
 </body>
 </html>
 
