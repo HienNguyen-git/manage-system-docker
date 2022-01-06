@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    ob_start();
     require_once('../admin/db.php');
     $user =get_info_employee_byuser($_SESSION['user']);
     if (!isset($_SESSION['user'])) {
@@ -154,3 +155,6 @@
 </body>
 </html>
 
+<?php
+    ob_end_flush();
+?>

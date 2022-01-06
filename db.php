@@ -1,5 +1,5 @@
 <?php
-
+    ob_start();
     define('HOST', 'mysql-server');
     define('USER', 'root');
     define('PASS', 'root');
@@ -462,4 +462,7 @@
         }
     }
     
+?>
+<?php
+    ob_end_flush();
 ?>

@@ -19,5 +19,4 @@
         header("Location: dayoffDetail.php?id=$id");
     }
     ob_end_flush();
-
 ?>
