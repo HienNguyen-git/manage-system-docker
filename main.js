@@ -617,11 +617,13 @@ else if(pageValue === 'departmentphp'){
         currentID = id;
         document.querySelector('#departmentNameUpdate').value = name;
         document.querySelector('#departmentNumUpdate').value = number;
-        // console.log(document.querySelector('#departmentManagerUpdate').value);
+        document.querySelector('#departmentManagerUpdate').value = manager;
+        // const managername = document.querySelector('#departmentManagerUpdate').value;
+        // console.log(manager);
         document.querySelector('#departmentDetailUpdate').innerHTML = detail;
         const departmentName = document.querySelector('#departmentNameUpdate').value;
         (async () => {
-            // select.insertAdjacentHTML('beforeend','<option value="" disabled selected>Manager Name</option>');
+            // select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>${manager}</option>`);
             const departmentName = document.querySelector('#departmentNameUpdate').value;
             
             const request1 = await fetch(`get_manager_name.php?department=${departmentName}`);
@@ -633,12 +635,14 @@ else if(pageValue === 'departmentphp'){
             }else{
     
                 const data = res['data'];
+                select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>${manager}</option>`);
                 optionSelectDeparment = data.map(e => `
+                
                     <option value="${e}">${e}</option>		
                 `).join('')
                 // console.log(optionSelectDeparment.value);
             }
-    
+            
             select.insertAdjacentHTML('beforeend',optionSelectDeparment);
         })()
     }
