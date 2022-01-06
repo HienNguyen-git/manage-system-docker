@@ -20,8 +20,9 @@
         $file_size =$file['size'];
         $file_tmp =$file['tmp_name'];
         $file_type=$file['type'];
-        // $file_ext=strtolower(end(explode('.',$file['name'])));
-        
+        $file_extend=explode('.',$file_name);
+        $file_ext = strtolower(end($file_extend));
+        $extensions= array("jpg","png","jpeg","gif");
         if(empty($errors)){
             $file_path = "images/".$file_name;
             move_uploaded_file($file_tmp, $file_path);
@@ -67,7 +68,6 @@
                     <div class="image-box">
                         <img src="<?=$row['avatar']?>" alt="Avatar">
                         <div class="image-action">
-                        <!-- '.$row['movieID'].' -->
                             <button style="display: block; background-color:transparent; border: 0; color: #fff" data-toggle="modal" data-target="#edit-avatar"><i class="fas fa-images"></i> Change image</button>
                         </div>
                     </div>

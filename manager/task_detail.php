@@ -35,7 +35,7 @@
     }
     if(isset($_POST['complete-submit'])){
         if(isset($_POST['rating'])||isset($_POST['is_late'])||isset($_POST['id_task_complete'])){
-            $rating = $_POST['rating'];
+            $rating = isset($_POST['rating'])?$_POST['rating']:'';
             $is_late = $_POST['is_late'];
             $id = $_POST['id_task_complete'];
 

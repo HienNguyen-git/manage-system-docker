@@ -22,12 +22,10 @@
 		if (isset($_POST['departmentNameUpdate']) && isset($_POST['departmentNumUpdate']) && isset($_POST['departmentManagerUpdate'])
 		&& isset($_POST['departmentDetailUpdate']))
 		{
-			// echo 'ahoho   ';
 			$departmentNameUpdate = $_POST['departmentNameUpdate'];
 			$departmentNumUpdate = $_POST['departmentNumUpdate'];
 			$departmentManagerUpdate = $_POST['departmentManagerUpdate'];
 			$departmentDetailUpdate = $_POST['departmentDetailUpdate'];
-			// echo $departmentNameUpdate . ' ' . $departmentNumUpdate . ' ' . $departmentManagerUpdate . ' ' . $departmentDetailUpdate;
 			if (empty($departmentNameUpdate)) {
 				$error = 'Please enter department name';
 			}
@@ -54,7 +52,6 @@
 				$departmentDetailUpdate = '';
 				
 				$success = "Update success";
-				// header("Refresh:0");
 			}
 		}
 		else{
@@ -72,7 +69,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="/style.css"> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<link rel="stylesheet" href="/style.css">
 	<title>Home Page</title>
 </head>
@@ -142,14 +138,9 @@
 						<tbody id="tbody">
 						<?php 
 							$result = get_departments(); 
-							// $department = '';
 							if($result['code'] == 0){
 								$data = $result['data'];
-								// print_r($data) ;
 								foreach($data as $row){
-									// $department = $row['name'];
-									// print_r($department);
-									// print_r($row) ;
 									?>
 									<tr class="item">
 										<td><?= $row['id'] ?></td>
@@ -181,12 +172,6 @@
 											>
 												Edit     
 											</a>
-											<!-- <a 
-												class="btn btn-primary bg-primary"
-												href="update_de.php"
-											>
-												Edit     
-											</a> -->
 											<a href="#" 
 													class="btn btn-danger"
 													onclick="handleTransferToDelete('<?= $row['name'] ?>','<?= $row['id'] ?>')" 
@@ -227,10 +212,6 @@
                             <label for="departmentNumAdd">Department Number</label>
                             <input name="departmentNumAdd" required class="form-control" type="number" placeholder="Department Number" id="departmentNumAdd">
                         </div>
-						<!-- <div class="form-group">
-                            <label for="departmentManagerAdd">Manager Name</label>
-                            <input name="departmentManagerAdd" required class="form-control" type="text" placeholder="Manager Name" id="departmentManagerAdd">
-                        </div> -->
                         <div class="form-group">
                             <label for="departmentDetailAdd">Department Detail</label>
                             <textarea id="departmentDetailAdd" name="departmentDetailAdd" rows="4" class="form-control" placeholder="Department Detail"></textarea>
@@ -322,140 +303,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <script src="/main.js"></script> Sử dụng link tuyệt đối tính từ root, vì vậy có dấu / đầu tiên -->
 	<script src="/main.js"></script> 
-
-	<!-- <script>
-		//thêm
-		const addForm = document.querySelector('#add-form')
-		const errorMess = document.getElementById('error-message')
-        addForm.addEventListener('submit', async (e)=>{
-            e.preventDefault();
-            const departmentNameAdd = document.querySelector('#departmentNameAdd').value
-            const departmentNumAdd = document.querySelector('#departmentNumAdd').value
-			const departmentDetailAdd = document.querySelector('#departmentDetailAdd').value
-            
-			if(departmentDeleteName === ''){
-				errorMess.style.display = 'block';
-				errorMess.innerHTML = 'Please enter department name';
-			}
-			else if(departmentNumAdd === ''){
-				errorMess.style.display = 'block';
-				errorMess.innerHTML = 'Please enter department number';
-			}
-			else if(departmentDetailAdd === ''){
-				errorMess.style.display = 'block';
-				errorMess.innerHTML = 'Please enter department detail';
-			}
-
-			const sendRequest = await fetch('add_department.php',{
-                method: 'POST',
-                body: JSON.stringify({departmentNameAdd,departmentNumAdd,departmentDetailAdd})
-            })
-            const res = await sendRequest.json();
-            reloadPage(res)
-        })
-
-		//xóa
-		let currentID;
-        const departmentDeleteName = document.querySelector('.department-delete-name');
-
-        function handleTransferToDelete(name, id){
-            departmentDeleteName.innerHTML = name;
-            currentID = id;
-        }
-
-		document.getElementById('btn-del').addEventListener('click',async () =>{
-            const request = await fetch('delete_department.php',{
-                method: 'delete',
-                body: JSON.stringify({id:currentID}),
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            })
-            const res = await request.json();
-            reloadPage(res)
-        })
-
-        //update
-		const select = document.getElementById('departmentManagerUpdate');
-
-		document.querySelector('.close-edit').addEventListener('click',() => {
-			select.innerHTML = '';
-		})
-
-        function handleTransferToUpdate(id,name,number,manager,detail){
-			currentID = id;
-            document.querySelector('#departmentNameUpdate').value = name;
-            document.querySelector('#departmentNumUpdate').value = number;
-            // console.log(document.querySelector('#departmentManagerUpdate').value);
-            document.querySelector('#departmentDetailUpdate').innerHTML = detail;
-			const departmentName = document.querySelector('#departmentNameUpdate').value;
-			(async () => {
-				// select.insertAdjacentHTML('beforeend','<option value="" disabled selected>Manager Name</option>');
-				const departmentName = document.querySelector('#departmentNameUpdate').value;
-				
-				const request1 = await fetch(`get_manager_name.php?department=${departmentName}`);
-				const res = await request1.json();
-				let optionSelectDeparment;
-				if(res['code']){
-					select.innerHTML = '';
-					optionSelectDeparment = `<option value="" disabled selected>${res['error']}</option>`;
-				}else{
-
-					const data = res['data'];
-					optionSelectDeparment = data.map(e => `
-						<option value="${e}">${e}</option>		
-					`).join('')
-					// console.log(optionSelectDeparment.value);
-				}
-
-				select.insertAdjacentHTML('beforeend',optionSelectDeparment);
-			})()
-        }
-		// const errMess = document.getElementById('err-message');
-        // document.querySelector('#update-form').addEventListener('submit',async (e)=>{
-        //     e.preventDefault();
-        //     const departmentNameUpdate = document.querySelector('#departmentNameUpdate').value
-        //     const departmentNumUpdate = document.querySelector('#departmentNumUpdate').value
-        //     const departmentManagerUpdate = document.querySelector('#departmentManagerUpdate').value
-		// 	console.log(departmentManagerUpdate);
-        //     const departmentDetailUpdate = document.querySelector('#departmentDetailUpdate').value
-		// 	if(departmentNumUpdate === ''){
-		// 		errMess.style.display = 'block';
-		// 		errMess.innerHTML = 'Please enter department number';
-		// 	}
-		// 	else if(departmentDetailUpdate === ''){
-		// 		errMess.style.display = 'block';
-		// 		errMess.innerHTML = 'Please enter department detail';
-		// 	}
-
-		// 	const sendRequest = await fetch('update_department.php',{
-		// 		method: 'POST',
-		// 		body: JSON.stringify({id:currentID,departmentNameUpdate,departmentNumUpdate,departmentManagerUpdate,departmentDetailUpdate})
-		// 	})
-		// 	const res = await sendRequest.json();
-		// 	if(res['code']){
-		// 		// errMess.style.display = 'block';
-		// 		// errMess.innerHTML = res['message'];
-		// 	}else{
-		// 		// console.log(res);
-		// 		select.innerHTML = '';
-		// 		reloadPage(res);
-		// 	}
-        // })
-
-		document.getElementById('edit-btn').addEventListener('click',() => {
-			document.getElementById('edit-hidden').value = 1;
-		})
-	</script>
-	<script>
-        function reloadPage(res){
-            if(res.code===0){
-                location.reload();
-            }
-        }
-    </script> -->
 </body>
 
 </html>

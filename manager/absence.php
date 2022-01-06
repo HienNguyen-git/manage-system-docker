@@ -219,6 +219,7 @@
 					</div>
 				</form>
 		</div>
+
 	</div>
 	<?php
 		if(!$status||!$is_lock || !$dayoff_left){
