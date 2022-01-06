@@ -9,7 +9,11 @@
     if( !is_password_changed($user) ){
         header('Location: change_password.php');
         exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'employee' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
     }
+    
     $id = $_GET['id'];
     $error = '';
     $message = "";

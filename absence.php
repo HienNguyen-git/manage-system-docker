@@ -3,13 +3,16 @@
 	ob_start();
 	require_once('db.php');
 	if(!isset($_SESSION['user'])){
-		header('Location: login.php');
+		header('Location: /login.php');
 	}
 	$user = $_SESSION['user'];
 	if( !is_password_changed($user) ){
-		header('Location: change_password.php');
+		header('Location: /change_password.php');
 		exit();
-	}
+	}else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'employee' ){
+        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
+    }
 
    	$error = '';
     $message = "";

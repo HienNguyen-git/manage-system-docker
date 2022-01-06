@@ -2,14 +2,28 @@
     session_start();
     ob_start();
     require_once('../db.php');
-   if(!isset($_SESSION['user'])){
-       header('Location: login.php');
-   }
-   $user = $_SESSION['user'];
-   if( !is_password_changed($user) ){
-       header('Location: change_password.php');
-       exit();
-   }
+    if(!isset($_SESSION['user'])){
+        header('Location: /login.php');
+    }
+    $user = $_SESSION['user'];
+    if( !is_password_changed($user) ){
+        header('Location: /change_password.php');
+        exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'manager' ){
+        move_page_manager(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
+    }
+    function move_page_manager($role){
+        if($role == 'employee'){
+			header('Location: ../index.php');
+		}
+		else if($role == 'manager'){
+			header('Location: .index.php');
+		}
+		else{
+			header('Location: ../admin/index.php');
+		}
+    }
 
    $error = '';
    $message = "";

@@ -4,8 +4,22 @@
     require_once('../admin/db.php');
     $user =get_info_employee_byuser($_SESSION['user']);
     if (!isset($_SESSION['user'])) {
-        header('Location: ../login.php');
+        header('Location: /login.php');
         exit();
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'manager' ){
+        move_page_manager(get_info_employee_byuser($_SESSION['user'])['role']);
+        exit();
+    }
+	function move_page_manager($role){
+        if($role == 'employee'){
+			header('Location: ../index.php');
+		}
+		else if($role == 'manager'){
+			header('Location: .index.php');
+		}
+		else{
+			header('Location: ../admin/index.php');
+		}
     }
 	$department = get_department_byuser($_SESSION['user'])['department'];
 ?>

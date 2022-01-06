@@ -1,4 +1,5 @@
 <?php
+	
     session_start();
 	ob_start();
 	require_once('../admin/db.php');
@@ -7,7 +8,7 @@
 		header('Location: ../login.php');
         exit();
     }
-	$user =get_info_employee_byuser($_SESSION['user']);
+	$user = get_info_employee_byuser($_SESSION['user']);
 	
 	//is_change_pass and check role
 	if( !is_password_changed($_SESSION['user']) ){
@@ -23,7 +24,7 @@
 			header('Location: ../index.php');
 		}
 		else if($role == 'manager'){
-			header('Location: .index.php');
+			header('Location: .	index.php');
 		}
 		else{
 			header('Location: ../admin/index.php');
