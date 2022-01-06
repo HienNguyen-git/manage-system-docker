@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     require_once('db.php');
 
     if($_SERVER['REQUEST_METHOD']!='POST'){
@@ -41,4 +42,7 @@
         die(json_encode(array('code'=>5,'message'=>'Khong the thuc hien lenh')));
     }
     die(json_encode(array('code'=>0,'message'=>'Da them san pham thanh cong')));
+?>
+<?php
+    ob_end_flush();
 ?>

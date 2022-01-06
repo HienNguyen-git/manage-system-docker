@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     define('HOST', 'mysql-server');
     define('USER', 'root');
     define('PASS', 'root');
@@ -840,4 +841,5 @@
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }
     }
+    ob_end_flush();
 ?> 

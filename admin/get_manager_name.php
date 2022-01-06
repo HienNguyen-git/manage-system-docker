@@ -1,4 +1,5 @@
 <?php 
+    ob_start();
     require_once('db.php');
 
     if(isset($_GET['department'])){
@@ -25,4 +26,7 @@
         }
         print_r(json_encode(array('code'=>0,'data'=>$data))) ;
     }
+?>
+<?php
+    ob_end_flush();
 ?>

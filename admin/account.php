@@ -1,5 +1,6 @@
 <?php
     session_start();
+    ob_start();
     require_once('../db.php');
    if(!isset($_SESSION['user'])){
        header('Location: login.php');
@@ -125,3 +126,6 @@
 	<script src="/main.js"></script> 
 </body>
 </html>
+<?php
+    ob_end_flush();
+?>

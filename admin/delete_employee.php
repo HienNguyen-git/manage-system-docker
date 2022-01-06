@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     require_once('db.php');
 
     if($_SERVER['REQUEST_METHOD']!='DELETE'){
@@ -37,4 +38,8 @@
     }
     delete_absence_info($currentName);
     die(json_encode(array('code'=>0,'message'=>'Da xoa thanh cong')));
+?>
+
+<?php
+    ob_end_flush();
 ?>
