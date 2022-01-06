@@ -157,7 +157,7 @@
 
     
     function get_tasks($user){
-        $sql = "select id, title, deadline, status from task where person=? ORDER BY deadline DESC";
+        $sql = "select id, title, deadline, status, modified_time from task where person=? ORDER BY modified_time DESC";
         $conn = open_database();
 
         $stm = $conn->prepare($sql);
