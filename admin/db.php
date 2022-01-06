@@ -367,7 +367,7 @@
 
     function get_tasks($department){
         // $sql = "select * from task ";
-        $sql = "select t.id,t.title,t.person,t.deadline,t.status from task t,employee e where e.department = ? AND t.person = e.username ORDER BY t.deadline DESC";
+        $sql = "select t.id,t.title,t.person,t.deadline,t.status from task t,employee e where e.department = ? AND t.person = e.username ORDER BY t.id DESC";
         $conn = open_database();
 
         $stm = $conn->prepare($sql);
@@ -812,6 +812,16 @@
 
         $stm = $conn->prepare($sql);
         $stm->bind_param('s',$username);
+        if(!$stm->execute()){
+            return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
+        }
+    }
+    function update_department($number,$detail,$name){
+        $sql = 'update department set number_room = ?, detail = ? where name =?';
+        $conn = open_database();
+        
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('iss',$number,$detail,$name);
         if(!$stm->execute()){
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }

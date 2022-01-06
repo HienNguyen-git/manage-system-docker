@@ -1,10 +1,7 @@
 <?php
+    ob_start();
     require_once('db.php');
-    header('Access-Control-Allow-Origin: *');
-
-    header('Access-Control-Allow-Methods: GET, POST');
     
-    header("Access-Control-Allow-Headers: X-Requested-With");
 
     if(isset($_GET['id'])){
         $id = $_GET['id'];
@@ -22,4 +19,5 @@
         return json_encode(array('code'=> 1,'success' => 'Only can use GET method'));
         // return json_encode(array('code'=> 1,'error' => 'Only can use GET method'));
     }
+    ob_end_flush();
 ?>

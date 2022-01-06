@@ -64,7 +64,7 @@
 				<div class="bg-light mt-4 text-dark p-2">
                     <div class="admin-panel-section-header ">
                         <h2>Detail Department</h2>
-                        <a class="addbtn btn " style="background-color: black;" href="dayoff.php">Back</a>
+                        <a class="addbtn btn " style="background-color: black;" href="department.php">Back</a>
                     </div>
                     <div class="account-container">
                         <table class="table-hover">

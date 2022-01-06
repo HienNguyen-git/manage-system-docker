@@ -25,7 +25,7 @@
 
 <input type="hidden" name="page" id="page" value="manager-addtask">
 <?php
-
+    // echo "helel";
     $error = '';
     $success = '';
 
@@ -54,6 +54,9 @@
         }
         else if (empty($taskDetailAdd)) {
             $error = 'Please enter detail task';
+        }
+        else if (strlen($taskDetailAdd)>255) {
+            $error = 'Detail task too long';
         }
         else if (empty($deadlineAdd)) {
             $error = 'Please enter deadline task';

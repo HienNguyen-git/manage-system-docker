@@ -1,9 +1,6 @@
 <?php 
+    ob_start();
     require_once('../admin/db.php');
-    header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST');
-    header("Access-Control-Allow-Headers: X-Requested-With");
-    
 
     if(isset($_GET['id'])&&isset($_GET['username'])){
         $id = $_GET['id'];
@@ -22,6 +19,5 @@
         header("Location: dayoffDetail.php?id=$id");
         // return array('code' => 0, 'success' => 'Password reset');
     }
-
-
+    ob_end_flush();
 ?>

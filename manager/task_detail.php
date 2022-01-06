@@ -191,7 +191,7 @@
                     <div class="admin-panel-section-header ">
                         <h2>Task Detail</h2>
                     </div>
-                    <div class="account-container">
+                    <div class="account-container" style="display: block;">
                         <table class="table-hover">
                             <?php 
                                 $id = $_GET['id'];

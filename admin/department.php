@@ -1,4 +1,5 @@
 <?php
+
     session_start();
 	require_once('db.php');
     if (!isset($_SESSION['user'])) {
@@ -46,6 +47,7 @@
 				update_managerName_department($departmentManagerUpdate,$departmentNameUpdate);
 				update_total_dayoff($currentManager,12);
 				update_total_dayoff($departmentManagerUpdate,15);
+				update_department($departmentNumUpdate,$departmentDetailUpdate,$departmentNameUpdate);
 				$departmentNameUpdate = '';
 				$departmentNumUpdate = '';
 				$departmentManagerUpdate = '';
