@@ -42,8 +42,8 @@
 
 	if(isset($_POST['taskTitleAdd']) && isset($_POST['taskDetailAdd']) && isset($_POST['deadlineAdd'])
 	&& isset($_FILES['file']) && isset($_POST['taskEmployeeAdd'])){
-		$title = $_POST['taskTitleAdd'];
-		$detail = $_POST['taskDetailAdd'];
+		$title = trim($_POST['taskTitleAdd']);
+		$detail = trim($_POST['taskDetailAdd']);
 		$deadline = $_POST['deadlineAdd'];
 		$taskEmployeeAdd = $_POST['taskEmployeeAdd'];
 		

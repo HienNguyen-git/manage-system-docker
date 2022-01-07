@@ -20,7 +20,7 @@
     $description = '';
 
     if (isset($_POST['description']) && isset($_FILES['file'])) {
-        $description = $_POST['description'];
+        $description = trim($_POST['description']);
         
         $file = $_FILES['file'];
         $errors= array();

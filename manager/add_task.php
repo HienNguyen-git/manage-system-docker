@@ -49,8 +49,8 @@
 
     if (isset($_POST['taskTitleAdd']) || isset($_POST['taskDetailAdd']) || isset($_POST['deadlineAdd']) || isset($_POST['taskEmployeeAdd']) || isset($_FILES['file']))
     {
-        $taskTitleAdd = $_POST['taskTitleAdd'];
-        $taskDetailAdd = $_POST['taskDetailAdd'];
+        $taskTitleAdd = trim($_POST['taskTitleAdd']);
+        $taskDetailAdd = trim($_POST['taskDetailAdd']);
         $deadlineAdd = $_POST['deadlineAdd'];
         $taskEmployeeAdd = isset($_POST['taskEmployeeAdd']) ? $_POST['taskEmployeeAdd'] : '';
 

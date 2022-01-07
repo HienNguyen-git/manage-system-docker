@@ -25,10 +25,10 @@
 		if (isset($_POST['departmentNameUpdate']) || isset($_POST['departmentNumUpdate']) || isset($_POST['departmentManagerUpdate'])
 		|| isset($_POST['departmentDetailUpdate']))
 		{
-			$departmentNameUpdate = $_POST['departmentNameUpdate'];
-			$departmentNumUpdate = $_POST['departmentNumUpdate'];
-			$departmentManagerUpdate = isset($_POST['departmentManagerUpdate']) ? $_POST['departmentManagerUpdate'] : '';
-			$departmentDetailUpdate = $_POST['departmentDetailUpdate'];
+			$departmentNameUpdate = trim($_POST['departmentNameUpdate']);
+			$departmentNumUpdate = trim($_POST['departmentNumUpdate']);
+			$departmentManagerUpdate = isset($_POST['departmentManagerUpdate']) ? trim($_POST['departmentManagerUpdate']) : '';
+			$departmentDetailUpdate = trim($_POST['departmentDetailUpdate']);
 			if (empty($departmentNameUpdate)) {
 				$error = 'Please enter department name';
 			}

@@ -75,7 +75,7 @@
 
     if(isset($_POST['reject-submit'])){
         if(isset($_POST['description'])||isset($_FILE['file'])||isset($_POST['is_extend'])||isset($_POST['id_task_reject'])){
-            $description = $_POST['description'];
+            $description = trim($_POST['description']);
             $is_extend = $_POST['is_extend'];
             $id = $_POST['id_task_reject'];
 
