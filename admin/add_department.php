@@ -1,12 +1,13 @@
 <?php
+    session_start();
     ob_start();
     require_once('db.php');
-    
     $me = get_info_employee_byuser($_SESSION['user']);
 	if($me['role'] != 'admin' ){
         move_page($me['role']);
-        exit();
+        // exit();
     }
+
 
     if($_SERVER['REQUEST_METHOD']!='POST'){
         http_response_code(405);
