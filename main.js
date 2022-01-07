@@ -563,7 +563,7 @@ else if(pageValue === 'departmentphp'){
         const departmentNameAdd = document.querySelector('#departmentNameAdd').value
         const departmentNumAdd = document.querySelector('#departmentNumAdd').value
         const departmentDetailAdd = document.querySelector('#departmentDetailAdd').value
-        
+        // console.log(departmentNameAdd,departmentNumAdd,departmentDetailAdd);
         if(departmentDeleteName === ''){
             errorMess.style.display = 'block';
             errorMess.innerHTML = 'Please enter department name';
@@ -582,7 +582,8 @@ else if(pageValue === 'departmentphp'){
             body: JSON.stringify({departmentNameAdd,departmentNumAdd,departmentDetailAdd})
         })
         const res = await sendRequest.json();
-        reloadPage(res)
+        console.log(res);
+        reloadPage(res);
     })
     
     //xóa
