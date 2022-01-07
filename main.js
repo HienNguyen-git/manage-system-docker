@@ -558,6 +558,7 @@ else if(pageValue === 'departmentphp'){
     //thêm
     const addForm = document.querySelector('#add-form')
     const errorMess = document.getElementById('error-message')
+    errorMess.innerHTML = '';
     addForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
         const departmentNameAdd = document.querySelector('#departmentNameAdd').value
@@ -642,12 +643,18 @@ else if(pageValue === 'departmentphp'){
                 select.innerHTML = '';
                 optionSelectDeparment = `<option value="" disabled selected>${res['error']}</option>`;
             }else{
-    
-                const data = res['data'];
-                select.insertAdjacentHTML('beforeend',`<option value="${manager}" selected>${manager}</option>`);
-
-                optionSelectDeparment = data.map(e => `
+                select.innerHTML = '';
                 
+                const data = res['data'];
+                if(!manager) {
+                    select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>Select manager</option>`);
+                }else{
+
+                    select.insertAdjacentHTML('beforeend',`<option value="${manager}" selected>${manager}</option>`);
+                }
+                // console.log(data);
+                optionSelectDeparment = data.map(e => `
+
                     <option value="${e}">${e}</option>		
                 `).join('')
                 // console.log(optionSelectDeparment.value);
