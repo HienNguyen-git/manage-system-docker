@@ -616,13 +616,21 @@ else if(pageValue === 'departmentphp'){
     
     function handleTransferToUpdate(id,name,number,manager,detail){
         currentID = id;
-        document.querySelector('#departmentNameUpdate').value = name;
-        document.querySelector('#departmentNumUpdate').value = number;
-        document.querySelector('#departmentManagerUpdate').value = manager;
+        const departmentManager = document.querySelector('#departmentManagerUpdate');
+        const departmentDetail = document.querySelector('#departmentDetailUpdate');
+        const departmentName = document.querySelector('#departmentNameUpdate');
+        const departmentNum = document.querySelector('#departmentNumUpdate');
+
+        departmentDetail.value = detail;
+        departmentName.value = name;
+        departmentNum.value = number;
+        departmentManager.value = manager;
+
+
+        // document.querySelector('#departmentManagerUpdate').value = manager;
         // const managername = document.querySelector('#departmentManagerUpdate').value;
         // console.log(manager);
-        document.querySelector('#departmentDetailUpdate').innerHTML = detail;
-        const departmentName = document.querySelector('#departmentNameUpdate').value;
+        // document.querySelector('#departmentDetailUpdate').innerHTML = detail;
         (async () => {
             // select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>${manager}</option>`);
             const departmentName = document.querySelector('#departmentNameUpdate').value;
@@ -636,7 +644,8 @@ else if(pageValue === 'departmentphp'){
             }else{
     
                 const data = res['data'];
-                select.insertAdjacentHTML('beforeend',`<option value="${manager}" disabled selected>${manager}</option>`);
+                select.insertAdjacentHTML('beforeend',`<option value="${manager}" selected>${manager}</option>`);
+
                 optionSelectDeparment = data.map(e => `
                 
                     <option value="${e}">${e}</option>		
