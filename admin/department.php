@@ -19,15 +19,15 @@
     $departmentManagerUpdate = '';
     $departmentDetailUpdate = '';
 
-	$is_edit = isset($_POST['is_edit']) ? $_POST['is_edit'] : '';
-	if($is_edit){
+	// $is_edit = isset($_POST['is_edit']) ? $_POST['is_edit'] : '';
+	// if($is_edit){
 
-		if (isset($_POST['departmentNameUpdate']) && isset($_POST['departmentNumUpdate']) && isset($_POST['departmentManagerUpdate'])
-		&& isset($_POST['departmentDetailUpdate']))
+		if (isset($_POST['departmentNameUpdate']) || isset($_POST['departmentNumUpdate']) || isset($_POST['departmentManagerUpdate'])
+		|| isset($_POST['departmentDetailUpdate']))
 		{
 			$departmentNameUpdate = $_POST['departmentNameUpdate'];
 			$departmentNumUpdate = $_POST['departmentNumUpdate'];
-			$departmentManagerUpdate = $_POST['departmentManagerUpdate'];
+			$departmentManagerUpdate = isset($_POST['departmentManagerUpdate']) ? $_POST['departmentManagerUpdate'] : '';
 			$departmentDetailUpdate = $_POST['departmentDetailUpdate'];
 			if (empty($departmentNameUpdate)) {
 				$error = 'Please enter department name';
@@ -35,32 +35,36 @@
 			else if (empty($departmentNumUpdate)) {
 				$error = 'Please enter department number';
 			}
-			else if (empty($departmentManagerUpdate)) {
-				$error = 'Please enter department Manager Name';
-			}
+			// else if (empty($departmentManagerUpdate)) {
+			// 	$error = 'Please enter department Manager Name';
+			// }
 			else if (empty($departmentDetailUpdate)) {
 				$error = 'Please enter department detail';
 			}
 			else {
+				
 				$currentManager = current_user_of_department($departmentNameUpdate);
-				update_to_manager($departmentManagerUpdate);
-				update_to_employee($currentManager);
-				update_managerName_department($departmentManagerUpdate,$departmentNameUpdate);
-				update_total_dayoff($currentManager,12);
-				update_total_dayoff($departmentManagerUpdate,15);
+				// echo $currentManager . $departmentManagerUpdate;
+				if(trim($currentManager) !== trim($departmentManagerUpdate)){
+					update_to_manager($departmentManagerUpdate);
+					update_to_employee($currentManager);
+					update_managerName_department($departmentManagerUpdate,$departmentNameUpdate);
+					update_total_dayoff($departmentManagerUpdate,15);
+					update_total_dayoff($currentManager,12);
+				}
 				update_department($departmentNumUpdate,$departmentDetailUpdate,$departmentNameUpdate);
-				$departmentNameUpdate = '';
-				$departmentNumUpdate = '';
-				$departmentManagerUpdate = '';
-				$departmentDetailUpdate = '';
+				// $departmentNameUpdate = '';
+				// $departmentNumUpdate = '';
+				// $departmentManagerUpdate = '';
+				// $departmentDetailUpdate = '';
 				
 				$success = "Update success";
 			}
 		}
-		else{
-			$error = "Data is not allowed NULL. Update fail!";
-		}
-	}
+		// else{
+		// 	$error = "Data is not allowed NULL. Update fail!";
+		// }
+	// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -223,12 +227,12 @@
                         <div class="form-group">
 							<div id="error-message" style="display:none" class='alert alert-danger'></div>
 							<?php
-								if (!empty($error)) {
-									echo "<div class='alert alert-danger'>$error</div>";
-								}
-								if (!empty($success)) {
-									echo "<div class='alert alert-success'>$success</div>";
-								}
+								// if (!empty($error)) {
+								// 	echo "<div class='alert alert-danger'>$error</div>";
+								// }
+								// if (!empty($success)) {
+								// 	echo "<div class='alert alert-success'>$success</div>";
+								// }
 							?>
                             <button type="submit" class="btn btn-primary px-5 mr-2">Add</button>
                         </div>

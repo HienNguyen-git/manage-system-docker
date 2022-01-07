@@ -437,7 +437,7 @@
     function update_total_dayoff($user,$total_dayoff ){
         $sql = "update absence_info set total_dayoff = ?, dayoff_left = ? where username = ?";
         $conn = open_database();
-        $dayoff_left= select_absence_info($user)['dayoff_left'];
+        $dayoff_left= isset(select_absence_info($user)['dayoff_left']) ? select_absence_info($user)['dayoff_left'] : 0;
         // print_r('<br></br>' . $user );
         
         // print_r( $dayoff_left);
