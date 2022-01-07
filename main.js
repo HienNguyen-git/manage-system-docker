@@ -561,9 +561,9 @@ else if(pageValue === 'departmentphp'){
     errorMess.innerHTML = '';
     addForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
-        const departmentNameAdd = document.querySelector('#departmentNameAdd').value
-        const departmentNumAdd = document.querySelector('#departmentNumAdd').value
-        const departmentDetailAdd = document.querySelector('#departmentDetailAdd').value
+        const departmentNameAdd = document.querySelector('#departmentNameAdd').value.trim()
+        const departmentNumAdd = document.querySelector('#departmentNumAdd').value.trim()
+        const departmentDetailAdd = document.querySelector('#departmentDetailAdd').value.trim()
         // console.log(departmentNameAdd,departmentNumAdd,departmentDetailAdd);
         if(departmentDeleteName === ''){
             errorMess.style.display = 'block';
@@ -628,10 +628,6 @@ else if(pageValue === 'departmentphp'){
         departmentManager.value = manager;
 
 
-        // document.querySelector('#departmentManagerUpdate').value = manager;
-        // const managername = document.querySelector('#departmentManagerUpdate').value;
-        // console.log(manager);
-        // document.querySelector('#departmentDetailUpdate').innerHTML = detail;
         (async () => {
             // select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>${manager}</option>`);
             const departmentName = document.querySelector('#departmentNameUpdate').value;
@@ -641,7 +637,11 @@ else if(pageValue === 'departmentphp'){
             let optionSelectDeparment;
             if(res['code']){
                 select.innerHTML = '';
-                optionSelectDeparment = `<option value="" disabled selected>${res['error']}</option>`;
+                if(!manager){
+                    optionSelectDeparment = `<option value="" disabled selected>${res['error']}</option>`;
+                }else{
+                    select.insertAdjacentHTML('beforeend',`<option value="${manager}" selected>${manager}</option>`);
+                }
             }else{
                 select.innerHTML = '';
                 
@@ -649,7 +649,6 @@ else if(pageValue === 'departmentphp'){
                 if(!manager) {
                     select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>Select manager</option>`);
                 }else{
-
                     select.insertAdjacentHTML('beforeend',`<option value="${manager}" selected>${manager}</option>`);
                 }
                 // console.log(data);

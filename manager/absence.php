@@ -202,7 +202,7 @@
 							<select name="dayoff" class="form-control" id="dayoff">
 							<option value="" disabled selected>Number of day off</option>
 							<?php
-								for ($i = 1; $i <= $day_off_permit; $i++){
+								for ($i = 1; $i <= $dayoff_left; $i++){
 									if($dayoff==$i){
 										echo "<option value='$i' selected>$i</option>";
 									}else{

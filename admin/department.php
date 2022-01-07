@@ -59,6 +59,7 @@
 				// $departmentDetailUpdate = '';
 				
 				$success = "Update success";
+				// header('Refresh:0');
 			}
 		}
 		// else{
@@ -271,7 +272,7 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<hp class="modal-title">Edit infomation employee</hp>
+					<hp class="modal-title">Edit infomation department</hp>
 					<button type="button" class="close close-edit" data-dismiss="modal" >&times;</button>
 				</div>
 				<form method="post" id="update-form" novalidate enctype="multipart/form-data">

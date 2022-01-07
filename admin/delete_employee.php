@@ -44,6 +44,10 @@
         die(json_encode(array('code'=>5,'message'=>'Khong the thuc hien lenh')));
     }
     delete_absence_info($currentName);
+    if(is_manager($currentName)){
+        $department = get_current_department($currentName);
+        update_manager_when_deleted($department);
+    }
     die(json_encode(array('code'=>0,'message'=>'Da xoa thanh cong')));
 ?>
 

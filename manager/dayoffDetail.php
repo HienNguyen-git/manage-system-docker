@@ -127,10 +127,18 @@
                                                 </tr>
                                                 <tr>
                                                     <td>File</td>
-                                                    <?php 
-                                                        $filename = explode('/',$row['file'])[1];
+                                                    <?php
+                                                        $file_ahihihi = $row['file']?explode('/',$row['file'])[1]:'-';
+                                                        if($row['file']){
+                                                            ?>
+                                                                <td><a href="../<?=$row['file']?>"><?=$file_ahihihi?></a></td>
+                                                            <?php
+                                                        }else{
+                                                            ?>
+                                                                <td>-</td>
+                                                            <?php
+                                                        }
                                                     ?>
-                                                    <td><a href="../<?=$row['file']?>"><?=$filename?></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Status</td>

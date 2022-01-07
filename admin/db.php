@@ -842,5 +842,51 @@
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }
     }
+
+
+    function is_manager($user){
+        $sql = "select * from department where manager_user=?";
+        $conn = open_database();
+
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('s',$user);
+
+        if(!$stm->execute()){
+            return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
+        }
+
+        $result = $stm->get_result();
+        return !$result->num_rows==0;
+    }
+
+    function get_current_department($user){
+        $sql = "select name from department where manager_user=?";
+        $conn = open_database();
+
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('s',$user);
+
+        if(!$stm->execute()){
+            return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
+        }
+
+        $result = $stm->get_result();
+        $data = $result->fetch_assoc();
+
+        return $data['name'];
+    }
+
+    function update_manager_when_deleted($name){
+        $sql = "update department set manager_user = '' where  name = ?";
+        $conn = open_database();
+
+        $stm = $conn->prepare($sql);
+        $stm->bind_param('s',$name);
+        if(!$stm->execute()){
+            return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
+        }
+    }
+
+
     ob_end_flush();
 ?> 
