@@ -578,7 +578,7 @@ else if(pageValue === 'departmentphp'){
         }
     
         const sendRequest = await fetch('add_department.php',{
-            method: 'POST',
+            method: 'POST', 
             body: JSON.stringify({departmentNameAdd,departmentNumAdd,departmentDetailAdd})
         })
         const res = await sendRequest.json();
@@ -635,7 +635,7 @@ else if(pageValue === 'departmentphp'){
             }else{
     
                 const data = res['data'];
-                select.insertAdjacentHTML('beforeend',`<option value="" disabled selected>${manager}</option>`);
+                select.insertAdjacentHTML('beforeend',`<option value="${manager}" disabled selected>${manager}</option>`);
                 optionSelectDeparment = data.map(e => `
                 
                     <option value="${e}">${e}</option>		

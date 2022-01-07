@@ -1,5 +1,5 @@
 <?php
-	// session_start();
+	session_start();
 	ob_start();
     require_once('db.php');
     if (!isset($_SESSION['user'])) {
@@ -10,9 +10,6 @@
         exit();
     }
 	//save department
-	
-	// $department = get_department_byuser($_SESSION['user'])['department'];
-	// $department = get_info_employees()['department'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

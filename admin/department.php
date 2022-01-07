@@ -284,7 +284,7 @@
 						<div class="form-group">
                             <label for="departmentManagerUpdate">Manager Name</label>
 							<select id="departmentManagerUpdate" class="form-control" name="departmentManagerUpdate" required>
-								<option value="" disabled selected>Manager Name</option>
+								<!-- <option value="" disabled selected>Manager Name</option> -->
 								
 							</select>
                         </div>
