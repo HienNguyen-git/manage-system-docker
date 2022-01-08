@@ -1,10 +1,10 @@
 <?php
     ob_start();
     require_once('db.php');
-    if(get_info_employee_byuser($_SESSION['user'])['role'] != 'employee' ){
-        move_page(get_info_employee_byuser($_SESSION['user'])['role']);
-        exit();
-    }
+    // if(get_info_employee_byuser($_SESSION['user'])['role'] != 'employee' ){
+    //     move_page(get_info_employee_byuser($_SESSION['user'])['role']);
+    //     exit();
+    // }
 
     if(isset($_GET['id'])){
         $id = $_GET['id'];
