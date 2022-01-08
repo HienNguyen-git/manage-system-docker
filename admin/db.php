@@ -369,7 +369,7 @@
 
     function get_tasks($department){
         // $sql = "select * from task ";
-        $sql = "select t.id,t.title,t.person,t.deadline,t.status from task t,employee e where e.department = ? AND t.person = e.username ORDER BY t.id DESC";
+        $sql = "select t.id,t.title,t.person,t.deadline,t.status,t.modified_time from task t,employee e where e.department = ? AND t.person = e.username ORDER BY t.modified_time DESC";
         $conn = open_database();
 
         $stm = $conn->prepare($sql);
