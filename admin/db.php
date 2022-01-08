@@ -608,14 +608,14 @@
         update_approval_date($user);
     }
 
-    function update_approval_date($user){
+    function update_approval_date($id){
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $today = date("Y-m-d H:i:s");
-        $sql = "update absence_form set approval_date = ? where username = ?";
+        $sql = "update absence_form set approval_date = ? where id = ?";
         $conn = open_database();
 
         $stm = $conn->prepare($sql);
-        $stm->bind_param('ss',$today,$user);
+        $stm->bind_param('si',$today,$id);
 
         if(!$stm->execute()){
             return array('code'=>1,'error'=>'Command not execute');

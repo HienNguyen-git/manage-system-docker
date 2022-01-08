@@ -22,7 +22,7 @@
         if(!$stm->execute()){
             return array('code' => 2, 'error' => 'Cant execute command');
         }
-        update_approval_date($user);
+        update_approval_date($id);
         header("Location: dayoffDetail.php?id=$id");
         // return array('code' => 0, 'success' => 'Password reset');
     }

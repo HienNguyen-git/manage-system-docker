@@ -1,7 +1,7 @@
 <?php
     session_start();
-    require_once('../db.php');
     ob_start();
+    require_once('../db.php');
     if(!isset($_SESSION['user'])){
         header('Location: /login.php');
     }
@@ -9,22 +9,22 @@
     if( !is_password_changed($user) ){
         header('Location: /change_password.php');
         exit();
-    }
-    else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
-        move_page_admin(get_info_employee_byuser($_SESSION['user'])['role']);
+    }else if(get_info_employee_byuser($_SESSION['user'])['role'] != 'admin' ){
+        move_page_manager(get_info_employee_byuser($_SESSION['user'])['role']);
         exit();
     }
-    function move_page_admin($role){
+    function move_page_manager($role){
         if($role == 'employee'){
-            header('Location: /index.php');
-        }
-        else if($role == 'manager'){
-            header('Location: /manager/index.php');
-        }
-        else{
-            header('Location: /index.php');
-        }
+			header('Location: ../index.php');
+		}
+		else if($role == 'manager'){
+			header('Location: .index.php');
+		}
+		else{
+			header('Location: ../admin/index.php');
+		}
     }
+
    $error = '';
    $message = "";
    
@@ -40,9 +40,9 @@
         if(empty($errors)){
             $file_path = "../images/".$file_name;
             move_uploaded_file($file_tmp, $file_path);
-            $file_pathname = "images/".$file_name;
+            $file_path_name = "images/".$file_name;
             $message = "Submit successful";
-            update_avatar($user,$file_pathname);
+            update_avatar($user,$file_path_name);
         }
     }
 ?>
@@ -54,14 +54,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/style.css"> <!-- Change -->
 	<title>Account Page</title>
 </head>
 
 <body style="background-color: lightblue;">
-    <input type="hidden" id="page" name="page" value="accountphp">
+<input type="hidden" name="page" id="page" value="manager-account">
     <section class="container" style="height: 70vh;">
 		<h1 class="mt-3 text-secondary">ACCOUNT INFORMATION</h1>
         
@@ -69,7 +73,7 @@
         <a class="btn btn-primary col-12 col-sm-5 " href="../change_pass.php">Change password</a>
         <a class="btn btn-dark col-12 col-sm-5" href="index.php">Back</a>
         
-        <div class="ml-auto mr-auto account-container">
+        <div class="ml-auto mr-auto account-container"  style="height: 50vh;">
             <?php
                 $data = get_user_info($user);
                 if(!$data['code']){
@@ -136,8 +140,7 @@
             </div>  
         </div>
     </div>
-   
-	<script src="/main.js"></script> 
+    <script src="/main.js"></script>
 </body>
 </html>
 <?php
