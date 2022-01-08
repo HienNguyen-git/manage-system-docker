@@ -446,6 +446,7 @@
         if(!$stm->execute()){
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }
+        header('Refresh:0');
     }
 
     function update_modified_time($id){
@@ -461,8 +462,6 @@
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }
     }
-
-    
 ?>
 <?php
     ob_end_flush();

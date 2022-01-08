@@ -45,6 +45,7 @@
             $message = "Submit successful";
             submit_task($id,$description,$file_path);
             update_modified_time($id);
+            header('Refresh:0');
         }
     }
 ?>
@@ -64,7 +65,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="/style.css"> <!-- Change -->
 	<title>Home Page</title>
-	
 </head>
 
 <body>
