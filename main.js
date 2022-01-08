@@ -418,7 +418,7 @@ else if(pageValue==='manager-index'){
         files.addEventListener('change', e=>{
             const file = e.target.files[0]
             console.log(file)
-            const type = file['name'].split('.').pop()
+            const type = file['name'].split('.').pop().toLowerCase();
             const size = file['size']
             const type_list = ["txt","doc","docx","xls","xlsx","jpg","png","mp3","mp4","pdf","rar","zip","pptx","sql","ppt","jpeg"]
             console.log(type, size, type_list)
