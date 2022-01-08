@@ -69,7 +69,7 @@
 
                         <!-- <a class="addbtn"  data-toggle="modal" data-target="#add-movie">Add Accout</a> -->
                     </div>
-                    <div class="account-container" style="position: relative;">
+                    <div class="account-container"  style="position: relative;height:50vh">
                         
                         <?php
                             $username = '';

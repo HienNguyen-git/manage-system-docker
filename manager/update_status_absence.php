@@ -35,6 +35,7 @@
             return array('code' => 2, 'error' => 'Cant execute command');
         }
         update_dayused($id,$username);
+        update_approval_date($id);
         header("Location: dayoffDetail.php?id=$id");
     }
     ob_end_flush();

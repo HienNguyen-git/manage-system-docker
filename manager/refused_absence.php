@@ -35,7 +35,8 @@
         if(!$stm->execute()){
             return array('code' => 2, 'error' => 'Cant execute command');
         }
-        update_approval_date($user);
+        update_approval_date($id);
+        
         header("Location: dayoffDetail.php?id=$id");
     }
     ob_end_flush();

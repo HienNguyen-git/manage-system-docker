@@ -49,7 +49,7 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 		
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="collapse navbar-collapse" id="navbarSupportedContent" >
 						<ul class="navbar-nav" style="flex-direction: column;">
 							<li class="nav-item active-menu">
 								<a class="nav-link p20" href="index.php"><i class="fas fa-user"></i>  Account </a>

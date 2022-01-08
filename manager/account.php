@@ -73,7 +73,7 @@
         <a class="btn btn-primary col-12 col-sm-5 " href="../change_pass.php">Change password</a>
         <a class="btn btn-dark col-12 col-sm-5" href="index.php">Back</a>
         
-        <div class="ml-auto mr-auto account-container">
+        <div class="ml-auto mr-auto account-container"  style="height: 50vh;">
             <?php
                 $data = get_user_info($user);
                 if(!$data['code']){

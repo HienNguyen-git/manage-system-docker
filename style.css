@@ -307,6 +307,6 @@
         margin-right: 8px !important;
     }
 
-    /* .bg-light{
-        height: 100vh;
-    } */
+    #navbarSupportedContent{
+        position: fixed;
+    }
