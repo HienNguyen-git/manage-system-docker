@@ -32,6 +32,15 @@
 	$status = '';
 	$is_lock = '';
 	$dayoff_left = 1;
+
+	$absenceInfo = get_absence_info($user);
+	if(!$absenceInfo['code']){
+		$data = $absenceInfo['data'];
+		$day_off_permit = $data['total_dayoff'];
+		$dayoff_used = $data['dayoff_used'];
+		$dayoff_left = $data['dayoff_left'];
+	}
+
     if (isset($_POST['description']) && isset($_FILES['file']) && isset($_POST['dayoff'])) {
         $description = $_POST['description'];
         $file = $_FILES['file'];
@@ -50,6 +59,8 @@
             $error = "Please enter your description";
         }else if(empty($dayoff)){
 			$error = "Please enter your day off";
+		}else if($dayoff>$dayoff_left){
+			$error = "Your day off is too much";
 		}else if(!$file_name){
             $message = "Submit successful";
             submit_absence_form($user,$dayoff,$description,'');

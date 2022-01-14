@@ -438,11 +438,14 @@
         return $d1<=$d2;
     }
 
+    
     function submit_absence_form($user,$number_dayoff ,$reason,$file){
-        $sql = "insert into absence_form(username,number_dayoff ,reason,file) values(?,?,?,?)";
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $today = date("Y-m-d H:i:s");
+        $sql = "insert into absence_form(username,create_date,number_dayoff ,reason,file) values(?,?,?,?,?)";
         $conn = open_database();
         $stm = $conn->prepare($sql);
-        $stm->bind_param('siss',$user,$number_dayoff ,$reason,$file);
+        $stm->bind_param('ssiss',$user,$today,$number_dayoff ,$reason,$file);
         if(!$stm->execute()){
             return json_encode(array('code'=> 2, 'error' => 'Can not execute command.'));
         }
