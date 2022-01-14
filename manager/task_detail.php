@@ -69,6 +69,7 @@
                 submit_complete_feedback($id,$rating,$submit_time_status);
                 update_task_status($id,'Completed');
                 update_modified_time($id);
+                header("Refresh:0");
             }
         }
     }
@@ -104,6 +105,7 @@
                         update_deadline($id,$deadlineAdd);
                         update_task_status($id,'Rejected');
                         update_modified_time($id);
+                        header("Refresh:0");
                     }else if(!in_array($file_ext,$extensions)){ // Check file type is allow or not
                         $error = "This type of file is not allowed";
                     }else if($file_size>104857600){ // Check file size is less than 100M
@@ -117,6 +119,7 @@
                         update_deadline($id,$deadlineAdd);
                         update_task_status($id,'Rejected');
                         update_modified_time($id);
+                        header("Refresh:0");
                     }
                 }else{
                     $error = "Please choose extend deadline date";
@@ -127,6 +130,7 @@
                     submit_reject_feedback($id,$description,'',$is_extend);
                     update_task_status($id,'Rejected');
                     update_modified_time($id);
+                    header("Refresh:0");
                 }else if(!in_array($file_ext,$extensions)){ // Check file type is allow or not
                     $error = "This type of file is not allowed";
                 }else if($file_size>104857600){ // Check file size is less than 100M
@@ -139,6 +143,7 @@
                     submit_reject_feedback($id,$description,$file_path_name,$is_extend);
                     update_task_status($id,'Rejected');
                     update_modified_time($id);
+                    header("Refresh:0");
                 }
             }
         }

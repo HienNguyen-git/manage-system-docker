@@ -224,7 +224,7 @@
 					<div class="form-group">
 						<div class="form-group">
 							<button type="submit" id="upload-btn-absence" class="btn btn-primary mb-3 col-sm-12 col-md-4">Submit</button>
-							<button type="submit" id="back-btn-absence" class="btn btn-secondary mb-3 col-sm-12 col-md-4">Back</button>
+							<button type="button"  id="back-btn-absence" class="btn btn-secondary mb-3 col-sm-12 col-md-4">Back</button>
 						</div>
 					</div>
 				</form>
